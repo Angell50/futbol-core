@@ -13,12 +13,14 @@ const rutasJugadores = require('./routes/jugadores');
 const rutasPartidos = require('./routes/partidos');
 const rutasDesempenos = require('./routes/desempenos');
 const rutasReportes = require('./routes/reportes');
+const authRoutes = require('./routes/authRoutes');
 
 app.use('/api/equipos', rutasEquipos);
 app.use('/api/jugadores', rutasJugadores);
 app.use('/api/partidos', rutasPartidos);
 app.use('/api/desempenos', rutasDesempenos);
 app.use('/api/reportes', rutasReportes);
+app.use('/api', authRoutes);
 
 
 
