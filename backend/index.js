@@ -14,6 +14,7 @@ const rutasPartidos = require('./routes/partidos');
 const rutasDesempenos = require('./routes/desempenos');
 const rutasReportes = require('./routes/reportes');
 const authRoutes = require('./routes/authRoutes');
+const usuarioRoutes = require('./routes/usuarioRoutes');
 
 app.use('/api/equipos', rutasEquipos);
 app.use('/api/jugadores', rutasJugadores);
@@ -21,8 +22,7 @@ app.use('/api/partidos', rutasPartidos);
 app.use('/api/desempenos', rutasDesempenos);
 app.use('/api/reportes', rutasReportes);
 app.use('/api', authRoutes);
-
-
+app.use('/api/usuarios', usuarioRoutes);
 
 app.get('/', (req, res) => {
   res.send('Servidor funcionando');

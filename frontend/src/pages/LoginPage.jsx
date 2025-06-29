@@ -16,6 +16,8 @@ const LoginPage = () => {
         contraseña
       });
 
+      localStorage.setItem('usuario', JSON.stringify(res.data.usuario));
+
       if (res.data.mensaje === 'Login exitoso') {
         navigate('/home'); // o la ruta de inicio que tengas
       }

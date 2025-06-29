@@ -5,12 +5,17 @@ const Usuario = sequelize.define('Usuario', {
   correo: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
   },
   contraseña: {
     type: DataTypes.STRING,
-    allowNull: false
-  }
+    allowNull: false,
+  },
+  rol: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: 'usuario', // Por defecto será usuario
+  },
 });
 
 module.exports = Usuario;
