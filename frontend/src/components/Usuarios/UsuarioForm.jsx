@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ValidacionesUsuario from '../../utils/validacionesUsuario'; 
 
 const UsuarioForm = ({ onSubmit, editando }) => {
   const [correo, setCorreo] = useState('');
@@ -19,6 +20,14 @@ const UsuarioForm = ({ onSubmit, editando }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // ✅ Aquí aplicamos la validación usando Strategy
+    const error = ValidacionesUsuario.validar({ correo, contraseña, rol });
+    if (error) {
+      alert(error);
+      return;
+    }
+
     onSubmit({ correo, contraseña, rol });
   };
 
