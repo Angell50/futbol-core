@@ -1,4 +1,3 @@
-// 📁 controllers/usuarioController.js
 const usuarioService = require('../services/usuarioService');
 
 module.exports = {

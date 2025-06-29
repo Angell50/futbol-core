@@ -1,4 +1,3 @@
-// 📁 services/usuarioService.js
 const Usuario = require('../models/Usuario');
 const bcrypt = require('bcryptjs');
 
