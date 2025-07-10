@@ -31,7 +31,6 @@ app.use('/api', authRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/prediccion', prediccionRoutes);
 
-
 // Ruta de prueba
 app.get('/', (req, res) => {
   res.send('Servidor funcionando');

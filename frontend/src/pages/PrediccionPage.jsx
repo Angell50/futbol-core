@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 
 const PrediccionPage = () => {
-  const [rendimientos, setRendimientos] = useState([]);
+  const [predicciones, setPredicciones] = useState([]);
   const [equipoIdeal, setEquipoIdeal] = useState([]);
 
   useEffect(() => {
@@ -13,9 +13,8 @@ const PrediccionPage = () => {
         const [res1, res2] = await Promise.all([
           axios.get('http://localhost:3001/api/prediccion/rendimientos'),
           axios.get('http://localhost:3001/api/prediccion/equipo-ideal')
-
         ]);
-        setRendimientos(res1.data);
+        setPredicciones(res1.data);
         setEquipoIdeal(res2.data);
       } catch (error) {
         console.error('Error al obtener datos de predicción:', error);
@@ -26,11 +25,21 @@ const PrediccionPage = () => {
   }, []);
 
   const dataGrafico = {
-    labels: rendimientos.map(r => r.jugador),
+    labels: predicciones.map(p => p.jugador),
     datasets: [
       {
-        label: 'Rendimiento Estimado',
-        data: rendimientos.map(r => r.rendimiento),
+        label: '🎯 Goles Estimados',
+        data: predicciones.map(p => p.goles_estimados),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      {
+        label: '🎯 Asistencias Estimadas',
+        data: predicciones.map(p => p.asistencias_estimadas),
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+      },
+      {
+        label: '📊 Calificación Final Estimada',
+        data: predicciones.map(p => p.calificacion_final_estimada),
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
       }
     ]
@@ -38,7 +47,7 @@ const PrediccionPage = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">📊 Predicción de Rendimiento por Jugador</h2>
+      <h2 className="mb-4">📈 Predicción Final por Jugador (Fin de Año)</h2>
       <Bar data={dataGrafico} />
 
       <h2 className="mt-5 mb-3">🏆 Equipo Ideal</h2>
