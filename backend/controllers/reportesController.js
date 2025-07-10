@@ -1,6 +1,7 @@
 const { Desempeno, Jugador, Equipo } = require('../models');
 const { Sequelize } = require('sequelize');
 
+// 🥇 Máximo goleador
 exports.maximoGoleador = async (req, res) => {
   try {
     const resultado = await Desempeno.findAll({
@@ -8,11 +9,15 @@ exports.maximoGoleador = async (req, res) => {
         'jugadorId',
         [Sequelize.fn('SUM', Sequelize.col('goles')), 'totalGoles']
       ],
-      group: ['jugadorId'],
+      group: ['jugadorId', 'jugador.id'], // 👈 importante incluir jugador.id por el alias
       order: [[Sequelize.literal('totalGoles'), 'DESC']],
       limit: 1,
-      include: [{ model: Jugador }]
+      include: [{
+        model: Jugador,
+        as: 'jugador' // ✅ Usa alias
+      }]
     });
+
     res.json(resultado[0]);
   } catch (error) {
     console.error(error);
@@ -20,20 +25,22 @@ exports.maximoGoleador = async (req, res) => {
   }
 };
 
+// 🧩 Mejor jugador por equipo
 exports.mejorPorEquipo = async (req, res) => {
   try {
     const equipoId = req.params.equipoId;
 
     const resultado = await Desempeno.findAll({
-      include: {
+      include: [{
         model: Jugador,
+        as: 'jugador', // ✅ Usa alias
         where: { equipoId }
-      },
+      }],
       attributes: [
         'jugadorId',
         [Sequelize.fn('AVG', Sequelize.col('calificacion_final')), 'promedio']
       ],
-      group: ['jugadorId'],
+      group: ['jugadorId', 'jugador.id'],
       order: [[Sequelize.literal('promedio'), 'DESC']],
       limit: 1
     });
@@ -45,20 +52,22 @@ exports.mejorPorEquipo = async (req, res) => {
   }
 };
 
+// 🧠 Mejor jugador por posición
 exports.mejorPorPosicion = async (req, res) => {
   try {
     const posicion = req.params.posicion;
 
     const resultado = await Desempeno.findAll({
-      include: {
+      include: [{
         model: Jugador,
+        as: 'jugador', // ✅ Usa alias
         where: { posicion }
-      },
+      }],
       attributes: [
         'jugadorId',
         [Sequelize.fn('AVG', Sequelize.col('calificacion_final')), 'promedio']
       ],
-      group: ['jugadorId'],
+      group: ['jugadorId', 'jugador.id'],
       order: [[Sequelize.literal('promedio'), 'DESC']],
       limit: 1
     });

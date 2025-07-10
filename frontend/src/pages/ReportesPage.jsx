@@ -35,7 +35,7 @@ function ReportesPage() {
       <div className="mb-4">
         <h5>⚽ Máximo goleador:</h5>
         {goleador ? (
-          <p>{goleador.Jugador?.nombre} con {goleador.totalGoles} goles</p>
+          <p>{goleador.jugador?.nombre} con {goleador.totalGoles} goles</p>
         ) : (
           <p>No hay datos disponibles</p>
         )}
@@ -52,7 +52,7 @@ function ReportesPage() {
         <button className="btn btn-primary" onClick={buscarMejorPorEquipo}>Buscar</button>
         {mejorPorEquipo && (
           <p className="mt-2">
-            {mejorPorEquipo.Jugador?.nombre} con promedio {parseFloat(mejorPorEquipo.promedio).toFixed(2)}
+            {mejorPorEquipo.jugador?.nombre} con promedio {parseFloat(mejorPorEquipo.promedio).toFixed(2)}
           </p>
         )}
       </div>
@@ -69,7 +69,7 @@ function ReportesPage() {
         <button className="btn btn-success" onClick={buscarMejorPorPosicion}>Buscar</button>
         {mejorPorPosicion && (
           <p className="mt-2">
-            {mejorPorPosicion.Jugador?.nombre} con promedio {parseFloat(mejorPorPosicion.promedio).toFixed(2)}
+            {mejorPorPosicion.jugador?.nombre} con promedio {parseFloat(mejorPorPosicion.promedio).toFixed(2)}
           </p>
         )}
       </div>

@@ -1,30 +1,30 @@
 const sequelize = require('../config/database');
 
+// Importar modelos
 const Usuario = require('./Usuario');
 const Equipo = require('./Equipo');
 const Jugador = require('./Jugador');
 const Partido = require('./Partido');
 const Desempeno = require('./Desempeno');
 
-// Relaciones
+// 🔗 Equipo ↔ Jugador
+Equipo.hasMany(Jugador, { foreignKey: 'equipoId', as: 'jugadores' });
+Jugador.belongsTo(Equipo, { foreignKey: 'equipoId', as: 'equipo' });
 
-// Equipo ↔ Jugador
-Equipo.hasMany(Jugador, { foreignKey: 'equipoId' });
-Jugador.belongsTo(Equipo, { foreignKey: 'equipoId' });
+// 🔗 Jugador ↔ Desempeno
+Jugador.hasMany(Desempeno, { foreignKey: 'jugadorId', as: 'desempenos' });
+Desempeno.belongsTo(Jugador, { foreignKey: 'jugadorId', as: 'jugador' }); // ✅ Alias "jugador"
 
-// Jugador ↔ Desempeno
-Jugador.hasMany(Desempeno, { foreignKey: 'jugadorId' });
-Desempeno.belongsTo(Jugador, { foreignKey: 'jugadorId' });
+// 🔗 Partido ↔ Desempeño
+Partido.hasMany(Desempeno, { foreignKey: 'partidoId', as: 'desempenos' });
+Desempeno.belongsTo(Partido, { foreignKey: 'partidoId', as: 'partido' }); // ✅ Alias "partido"
 
-// Partido ↔ Desempeno
-Partido.hasMany(Desempeno, { foreignKey: 'partidoId' });
-Desempeno.belongsTo(Partido, { foreignKey: 'partidoId' });
-
-// Partido ↔ Equipos (Local y Visitante)
+// 🔗 Partido ↔ Equipos (Local y Visitante)
 Partido.belongsTo(Equipo, { as: 'equipoLocal', foreignKey: 'equipoLocalId' });
 Partido.belongsTo(Equipo, { as: 'equipoVisitante', foreignKey: 'equipoVisitanteId' });
 
-const db = {
+// ✅ Exporta los modelos para usarlos en controladores
+module.exports = {
   sequelize,
   Usuario,
   Equipo,
@@ -32,5 +32,3 @@ const db = {
   Partido,
   Desempeno
 };
-
-module.exports = db;

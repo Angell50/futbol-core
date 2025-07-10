@@ -96,7 +96,7 @@ function DesempenosPage() {
       <ul className="list-group">
         {desempenos.map(d => (
           <li key={d.id} className="list-group-item">
-            {d.Jugador?.nombre} – {d.goles} ⚽, {d.asistencias} 🅰️, {d.pases} 🎯, {d.recuperaciones} 🛡️ – Puntuación: <strong>{d.calificacion_final}</strong>
+            {d.jugador?.nombre} – {d.goles} ⚽, {d.asistencias} 🅰️, {d.pases} 🎯, {d.recuperaciones} 🛡️ – Puntuación: <strong>{d.calificacion_final}</strong>
           </li>
         ))}
       </ul>

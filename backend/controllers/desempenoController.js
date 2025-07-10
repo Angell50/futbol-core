@@ -32,15 +32,17 @@ exports.obtenerDesempenos = async (req, res) => {
   try {
     const lista = await Desempeno.findAll({
       include: [
-        { model: Jugador },
-        { model: Partido }
+        { model: Jugador, as: 'jugador' },
+        { model: Partido, as: 'partido' }
       ]
     });
     res.json(lista);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error al obtener desempeños' });
   }
 };
+
 
 exports.actualizarDesempeno = async (req, res) => {
   try {

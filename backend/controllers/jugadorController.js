@@ -12,10 +12,11 @@ exports.crearJugador = async (req, res) => {
 exports.obtenerJugadores = async (req, res) => {
   try {
     const jugadores = await Jugador.findAll({
-      include: [{ model: Equipo }]
+      include: [{ model: Equipo, as: 'equipo' }]  // 🔧 Usa el alias exacto
     });
     res.json(jugadores);
   } catch (error) {
+    console.error('Error al obtener jugadores:', error.message);
     res.status(500).json({ error: 'Error al obtener jugadores' });
   }
 };

@@ -1,26 +1,35 @@
+// models/Desempeno.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 const Desempeno = sequelize.define('Desempeno', {
   goles: {
     type: DataTypes.INTEGER,
-    defaultValue: 0
+    allowNull: false
   },
   asistencias: {
     type: DataTypes.INTEGER,
-    defaultValue: 0
+    allowNull: false
   },
   pases: {
     type: DataTypes.INTEGER,
-    defaultValue: 0
+    allowNull: false
   },
   recuperaciones: {
     type: DataTypes.INTEGER,
-    defaultValue: 0
+    allowNull: false
   },
   calificacion_final: {
-    type: DataTypes.FLOAT
-    // Este se calculará automáticamente
+    type: DataTypes.FLOAT,
+    allowNull: false
+  },
+  jugadorId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  partidoId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 });
 
