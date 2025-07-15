@@ -47,14 +47,16 @@ const PrediccionPage = () => {
 
   return (
     <div className="container mt-4">
+      
       <h2 className="mb-4">📈 Predicción Final por Jugador (Fin de Año)</h2>
-      <Bar data={dataGrafico} />
+        <Bar data={dataGrafico} />
+      
 
       <h2 className="mt-5 mb-3">🏆 Equipo Ideal</h2>
       <ul className="list-group">
         {equipoIdeal.map(j => (
           <li key={j.jugadorId} className="list-group-item">
-            {j.nombre} - {j.posicion} (Rendimiento: {j.rendimiento.toFixed(2)})
+            {j.nombre} - {j.posicion} 
           </li>
         ))}
       </ul>
