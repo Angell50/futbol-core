@@ -150,4 +150,4 @@ Este proyecto está pensado para ejecutarse en entorno local, pero puede ser fá
 
 ## ✍️ Autor
 
-Janeth Salazar – Grupo Saur – UDLA 2025
+Angel Vela – UDLA 2025
