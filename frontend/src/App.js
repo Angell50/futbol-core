@@ -10,6 +10,7 @@ import InicioPage from './pages/InicioPage';
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar';
 import PrediccionPage from './pages/PrediccionPage';
+import PaisesPage from './pages/PaisesPage';
 
 function AppRoutes() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function AppRoutes() {
           <Route path="/home" element={usuario ? <InicioPage /> : <Navigate to="/" />} />
           <Route path="/reportes" element={usuario ? <ReportesPage /> : <Navigate to="/" />} />
           <Route path="/prediccion" element={usuario ? <PrediccionPage /> : <Navigate to="/" />} />
+          <Route path="/paises" element={usuario ? <PaisesPage />: <Navigate to="/" />} />
 
           <Route path="/usuarios" element={esAdmin ? <UsuariosPage /> : <Navigate to="/home" />} />
           <Route path="/equipos" element={esAdmin ? <EquiposPage /> : <Navigate to="/home" />} />

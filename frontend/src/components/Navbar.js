@@ -20,6 +20,7 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto">
             <li className="nav-item"><Link className="nav-link" to="/reportes">Reportes</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/prediccion">Predicción</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/paises">Buscar País</Link></li>
 
             {usuario.rol === 'admin' && (
               <>
@@ -28,6 +29,7 @@ const Navbar = () => {
                 <li className="nav-item"><Link className="nav-link" to="/partidos">Partidos</Link></li>
                 <li className="nav-item"><Link className="nav-link" to="/desempenos">Desempeños</Link></li>
                 <li className="nav-item"><Link className="nav-link" to="/usuarios">Usuarios</Link></li>
+
               </>
             )}
           </ul>
