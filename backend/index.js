@@ -19,6 +19,7 @@ const rutasReportes = require('./routes/reportes');
 const authRoutes = require('./routes/authRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const prediccionRoutes = require('./routes/prediccion');
+const reporteRoutes = require('./routes/reporteRoutes');
 
 
 // Prefijos de ruta
@@ -30,6 +31,7 @@ app.use('/api/reportes', rutasReportes);
 app.use('/api', authRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/prediccion', prediccionRoutes);
+app.use('/api/reportes', reporteRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {

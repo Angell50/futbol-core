@@ -21,6 +21,7 @@ const Navbar = () => {
             <li className="nav-item"><Link className="nav-link" to="/reportes">Reportes</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/prediccion">Predicción</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/paises">Buscar País</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/reportes/goleadores">Reporte Goleadores</Link></li>
 
             {usuario.rol === 'admin' && (
               <>

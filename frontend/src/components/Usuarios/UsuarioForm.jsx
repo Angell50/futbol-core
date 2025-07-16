@@ -21,7 +21,7 @@ const UsuarioForm = ({ onSubmit, editando }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ Aquí aplicamos la validación usando Strategy
+    // Aquí aplicamos la validación usando Strategy
     const error = ValidacionesUsuario.validar({ correo, contraseña, rol });
     if (error) {
       alert(error);
